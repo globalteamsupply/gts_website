@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Signup</title>
+
+    <style>
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+            background-color: #f7f8fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 120px auto 40px auto;
+            background: #fff;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(12,18,30,0.08);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 16px;
+            color: #0b1220;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-top: 12px;
+            margin-bottom: 4px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        #validationMessage {
+            color: red;
+            margin-top: 8px;
+            white-space: pre-line;
+        }
+
+        #displayNameCheck {
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #0b72ff;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+            button:disabled {
+                background-color: #a0b9ff;
+                cursor: not-allowed;
+            }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Complete Your Profile</h1>
+
+        <label for="displayNameInput">Display Name</label>
+        <input type="text" id="displayNameInput" placeholder="4 to 16 characters, no spaces">
+        <div id="displayNameCheck"></div>
+
+        <label for="companyNameInput">Company Name</label>
+        <input type="text" id="companyNameInput">
+
+        <label for="firstNameInput">First Name</label>
+        <input type="text" id="firstNameInput">
+
+        <label for="lastNameInput">Last Name</label>
+        <input type="text" id="lastNameInput">
+
+        <label for="address1Input">Street Address</label>
+        <input type="text" id="address1Input" placeholder="123 Main St">
+
+        <label for="address2Input">Address Line 2 (optional)</label>
+        <input type="text" id="address2Input">
+
+        <label for="cityInput">City</label>
+        <input type="text" id="cityInput">
+
+        <label for="stateInput">State</label>
+        <input type="text" id="stateInput" list="usStates">
+        <datalist id="usStates">
+            <option value="AL"></option>
+            <option value="AK"></option>
+            <option value="AZ"></option>
+            <option value="AR"></option>
+            <option value="CA"></option>
+            <option value="CO"></option>
+            <option value="CT"></option>
+            <option value="DE"></option>
+            <option value="FL"></option>
+            <option value="GA"></option>
+            <option value="HI"></option>
+            <option value="ID"></option>
+            <option value="IL"></option>
+            <option value="IN"></option>
+            <option value="IA"></option>
+            <option value="KS"></option>
+            <option value="KY"></option>
+            <option value="LA"></option>
+            <option value="ME"></option>
+            <option value="MD"></option>
+            <option value="MA"></option>
+            <option value="MI"></option>
+            <option value="MN"></option>
+            <option value="MS"></option>
+            <option value="MO"></option>
+            <option value="MT"></option>
+            <option value="NE"></option>
+            <option value="NV"></option>
+            <option value="NH"></option>
+            <option value="NJ"></option>
+            <option value="NM"></option>
+            <option value="NY"></option>
+            <option value="NC"></option>
+            <option value="ND"></option>
+            <option value="OH"></option>
+            <option value="OK"></option>
+            <option value="OR"></option>
+            <option value="PA"></option>
+            <option value="RI"></option>
+            <option value="SC"></option>
+            <option value="SD"></option>
+            <option value="TN"></option>
+            <option value="TX"></option>
+            <option value="UT"></option>
+            <option value="VT"></option>
+            <option value="VA"></option>
+            <option value="WA"></option>
+            <option value="WV"></option>
+            <option value="WI"></option>
+            <option value="WY"></option>
+        </datalist>
+
+        <label for="phoneNumberInput">Phone Number</label>
+        <input type="text" id="phoneNumberInput" placeholder="">
+        <label style="display:flex; gap:8px; align-items:flex-start; margin-top:16px;">
+            <input type="checkbox" id="contactConsentCheckbox">
+            <span>
+                I agree to be contacted by phone, email, or SMS regarding my account, orders, and services.
+            </span>
+        </label>
+        <label style="display:flex; gap:8px; align-items:flex-start; margin-top:12px;">
+            <input type="checkbox" id="termsCheckbox">
+            <span>
+                I agree to the Terms of Service and Privacy Policy.
+            </span>
+        </label>
+        <div id="validationMessage"></div>
+
+        <button id="submitButton" type="button" disabled>Complete Signup</button>
+    </main>
+
+    <script type="module" src="./complete-signup.obf.js"></script>
+    <div id="global-footer"></div>
+    <script>
+        fetch('/footer.html')
+            .then(res => res.text())
+            .then(html => document.getElementById('global-footer').innerHTML = html)
+            .catch(err => console.error('Failed to load footer:', err));
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Details</title>
+    <link rel="stylesheet" href="/css/global.css">
+</head>
+<style>
+    * {
+        color: black;
+    }
+</style>
+<body>
+
+    <h1>Order Details</h1>
+
+    <div id="orderInfo">
+        <p><strong>Order Number:</strong> <span id="orderNumber"></span></p>
+        <p><strong>Status:</strong> <span id="status"></span></p>
+        <p><strong>ETA:</strong> <span id="eta"></span></p>
+        <p><strong>Quantity:</strong> <span id="quantity"></span></p>
+        <p><strong>Style:</strong> <span id="style"></span></p>
+        <p><strong>Brand:</strong> <span id="brand"></span></p>
+        <p><strong>Major:</strong> <span id="major"></span></p>
+        <p><strong>Minor:</strong> <span id="minor"></span></p>
+        <p><strong>Date Submitted:</strong> <span id="date"></span></p>
+    </div>
+
+    <h2>Order Breakdown</h2>
+    <table border="1" width="100%">        
+        <tbody id="rosterTable"></tbody>
+    </table>
+
+    <script type="module" src="./order-details.obf.js"></script>
+</body>
+</html>

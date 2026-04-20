@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manager Dashboard</title>
+    <link rel="stylesheet" href="/css/global.css">
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #111;
+            color: white;
+        }
+
+        header {
+            padding: 20px;
+            background: #000;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #333;
+            text-align: left;
+        }
+
+        
+    </style>
+
+</head>
+
+<body>
+
+    <header id="header"></header>
+
+    <script type="module">
+        import { auth } from "../firebase.js";
+        import { renderHeader, setupAuthHeader } from "./dashboard_header.obf.js";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            renderHeader();
+            setupAuthHeader(auth);
+        });
+    </script>
+
+    <section style="padding:20px;">
+
+        <h3>Your Orders</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Date Submitted</th>
+                    <th>Order Number</th>
+                    <th>League Name/Division</th>
+                    <th>Team Name</th>
+                    <th>Total Jerseys</th>
+                    <th>Estimated Arrival Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="ordersTable">
+                <tr>
+                    <td colspan="7">Loading orders...</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </section>
+
+    <script type="module" src="./dashboard.obf.js"></script>
+    <script type="module" src="./dashboard_header.obf.js"></script>
+    <div id="global-footer"></div>
+    <script>
+        fetch('/footer.html')
+            .then(res => res.text())
+            .then(html => document.getElementById('global-footer').innerHTML = html)
+            .catch(err => console.error('Failed to load footer:', err));
+    </script>
+</body>
+</html>

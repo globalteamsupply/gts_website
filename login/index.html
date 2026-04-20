@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+
+<body>
+
+    <h1>Manager Sign In</h1>
+
+    <input id="email" type="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+    <button onclick="logout()">Logout</button>
+    <button onclick="location.href='/'">Home</button>
+
+    <script type="module">
+        import { loginUser, logoutUser } from "../firebase.js";
+
+        window.login = async function () {
+            try {
+                await loginUser(
+                    document.getElementById("email").value,
+                    document.getElementById("password").value
+                );
+
+                // redirect to dashboard after successful login
+                window.location.href = "/dashboard";
+
+            } catch (e) {
+                alert(e.message);
+            }
+        };
+
+        window.logout = async function () {
+            await logoutUser();
+            alert("Logged out");
+        };
+    </script>
+    <div id="global-footer"></div>
+    <script>
+        fetch('/footer.html')
+            .then(res => res.text())
+            .then(html => document.getElementById('global-footer').innerHTML = html)
+            .catch(err => console.error('Failed to load footer:', err));
+    </script>
+
+</body>
+</html>

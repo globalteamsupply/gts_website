@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Team Supply</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <style>
+
+
+        header {
+            padding: 20px;
+            width: 100%;
+            background: #000;
+            position: fixed;
+            display: flex;
+            justify-content: space-between;
+            left: 0;
+            top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #333;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bg-container">
+        <div class="bg active"></div>
+        <div class="bg"></div>
+    </div>
+    <script type="module" src="/background.obf.js"></script>
+    <header id="header"></header>
+
+    <script type="module">
+        import { auth } from "/firebase.js";
+        import { renderHeader, setupAuthHeader } from "/dashboard/dashboard_header.obf.js";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            renderHeader();
+            setupAuthHeader(auth);
+        });
+    </script>
+    <section>
+        <div class="card">
+            <h2>Simplify Your League’s Uniform Orders</h2>
+
+            <div class="button-group">
+                <!--
+                <button onclick="location.href='start-program/'">
+                    Start a Team Uniform Program
+                </button>
+                -->
+
+                <button onclick="location.href='request-quote/'">
+                    Request a Team Quote
+                </button>
+                <!--
+                <button onclick="location.href='login/'">
+                    Manager Sign In
+                </button>
+                -->
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+
+        document.querySelectorAll('.card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+
+
+    <div id="global-footer"></div>
+    <script>
+        fetch('/footer.html')
+            .then(res => res.text())
+            .then(html => document.getElementById('global-footer').innerHTML = html)
+            .catch(err => console.error('Failed to load footer:', err));
+    </script>
+</body>
+    </html>

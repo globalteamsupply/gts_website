@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Team Supply</title>
+    <link rel="stylesheet" href="/css/global.css">   
+</head>
+
+<body>
+    <div id="bg-container">
+        <div class="bg active"></div>
+        <div class="bg"></div>
+    </div>
+    <script type="module" src="/background.obf.js"></script>
+    <header>
+        <img src="/images/logo.png" alt="Global Team Supply" class="logo">
+    </header>
+    <section>
+        <h1>Team Uniforms Made Simple</h1>
+        <p class="sub">Jersey orders end-to-end — batch and delivery.</p>
+        <br>
+        <button onclick="scrollToForm()">Request a Team Quote</button>
+    </section>
+
+    <section>
+        <h2>Who This Is For</h2>
+        <div class="grid">
+            <div class="card">League Directors</div>
+            <div class="card">Travel Teams</div>
+            <div class="card">Coaches & Team Managers</div>
+            <div class="card">Schools & Organizations</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Why Teams Choose Us</h2>
+        <div class="card">We manage the entire team order from start to finish</div>
+        <div class="card">Consistent, professional team uniforms</div>
+        <div class="card">Fast turnaround and reliable delivery</div>
+    </section>
+
+    <section>
+        <h2>How It Works</h2>
+        <div class="grid">
+            <div class="card">1. Submit your league details.</div>
+            <div class="card">2. Select your uniform style and color per team.</div>
+            <div class="card">3. Submit complete rosters.</div>
+            <div class="card">4. We handle customization and production.</div>
+            <div class="card">5. Delivered Team Ready.</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Get Your Team Quote</h2>
+        <form id="quoteForm">
+            <input type="text" name="team_name" placeholder="Team Name" required>
+
+            <select class="sport_name" name="sport" required>
+                <option value="">Select Sport</option>
+                <option>Baseball</option>
+                <option>Softball</option>
+                <option>Soccer</option>
+                <option>Basketball</option>
+                <option>Football</option>
+                <option value="other">Other</option>
+            </select>
+
+            <input type="text"
+                   id="otherSport"
+                   placeholder="Enter sport"
+                   style="display:none; margin-top:8px;">
+
+            <input type="number" name="player_count" placeholder="Estimated Number of Players" required>
+            <input type="text" name="contact_name" placeholder="Name of Primary Contact" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="tel" name="phone" placeholder="Phone">
+
+            <button type="submit">Request Quote</button>
+        </form>
+    </section>
+
+    <footer>
+        © 2026 Global Team Supply
+    </footer>
+
+    <script>
+        function scrollToForm() {
+            document.getElementById('quoteForm').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        /* SCROLL ANIMATION */
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+
+        document.querySelectorAll('.card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+
+    <script type="module" src="./app.obf.js"></script>
+    <footer class="bottom-bar">
+        <div id="footer-placeholder"></div>
+
+        <script>
+            fetch('/footer.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                });
+        </script>
+    </footer>
+</body>
+</html>

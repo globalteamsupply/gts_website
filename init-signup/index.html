@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Studio Roster</title>
+
+
+    <style>
+
+        main {
+        }
+
+        .signupContainer {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            width: 320px;
+            position: relative;
+        }
+
+        .close-signup {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: #444;
+        }
+
+            .close-signup:hover {
+                color: #000;
+            }
+
+        .signupContainer h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+            button:hover {
+                background: #C0C0C0;
+            }
+
+            button:disabled {
+                background: #aaa;
+                cursor: not-allowed;
+            }
+
+        .warning {
+            color: red;
+            font-size: 13px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        #notification {
+            color: green;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .signConHeadText {
+        }
+
+        .signupHeader {
+        }
+    </style>
+</head>
+<body>
+    <div id="global-header"></div>
+    <main>
+
+        <div class="signupContainer">
+            <p>
+                <strong>THIS IS AN INITIAL SIGNUP FORM.</strong> You will be required to complete a <strong>full personal information signup form</strong> before you can access the full functions of the app and site.
+            </p>
+            <p>
+                To get started, please provide your email, password, and date of birth. After submitting this information, you will receive a verification email.
+                Once verified, you will be required to complete the full signup form, including your Display Name and other required personal information.
+            </p>
+            <p>
+                Please note: if you do not wish to complete the full signup form, you will not be able to proceed.
+            </p>
+            <div class="signupHeader">
+                <button class="close-signup" id="closeSignupBtn" style="width: 50px; right: 5px;">&#10005;</button>
+                <h2 class="signConHeadText">Sign Up</h2>
+            </div>
+
+            <div id="notification"></div>
+
+            <form id="signupForm" class="signupForm">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                <input type="date" id="dob" required>
+
+                <label class="dobLabel">
+                    <input type="checkbox" id="ageCheckbox">
+                    I confirm that I am 18 years of age or older.
+                </label>
+                <div id="ageWarning" class="warning" style="display:none;">
+                    You must confirm that you are 18 or older.
+                </div>
+
+                <label class="termsLabel">
+                    <input type="checkbox" id="termsCheckbox">
+                    I agree to the <a href="/terms_of_use" target="_blank">Terms of Use</a>.
+                </label>
+                <div id="termsWarning" class="warning" style="display:none;">
+                    You must agree to the Terms of Use before continuing.
+                </div>
+
+                <div id="dobWarning" class="warning" style="display:none;">You must be at least 18 years old.</div>
+                <label class="termsLabel">
+                    <input type="checkbox" id="fullSignupCheckbox">
+                    I agree I will have to provide all personal information after email verification before continuing to use the site or app.
+
+                </label>
+                <div id="fullSignupWarning" class="warning" style="display:none;">
+                    You must agree that you are aware you will have to provide all personal information after email verification before continuing to use the site or app.
+                </div>
+
+
+
+                <button type="submit" id="signupBtn" disabled>Sign Up</button>
+            </form>
+
+            <p>Already have an account? <a href="/login/">Login</a></p>
+        </div>
+        <br />
+        <br />
+
+
+
+
+
+    </main>
+
+    <script type="module" src="./signup.obf.js"></script>
+
+    <div id="global-footer"></div>
+    <script>
+        fetch('/footer.html')
+            .then(res => res.text())
+            .then(html => document.getElementById('global-footer').innerHTML = html)
+            .catch(err => console.error('Failed to load footer:', err));
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Start Program</title>
+</head>
+
+<body>
+
+    <h1>Start a Team Uniform Program</h1>
+
+    <input id="league" placeholder="League Name">
+    <input id="contact" placeholder="Contact Name">
+    <input id="email" placeholder="Email">
+    <input id="players" placeholder="Number of Players">
+
+    <button onclick="submitProgram()">Submit</button>
+    <button onclick="location.href='/'">Home</button>
+
+    <script type="module">
+import { addLead } from "../firebase.js";
+
+window.submitProgram = async function() {
+  await addLead({
+    type: "program",
+    league: document.getElementById("league").value,
+    contact: document.getElementById("contact").value,
+    email: document.getElementById("email").value,
+    players: document.getElementById("players").value,
+    created: new Date()
+  });
+
+  alert("Submitted!");
+};
+    </script>
+
+</body>
+</html>

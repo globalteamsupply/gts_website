@@ -1,0 +1,230 @@
+#bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0;
+    transition: opacity 3s ease-in-out;
+}
+
+    .bg.active {
+        opacity: 1;
+    }
+
+body {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    padding-top: 150px;
+}
+
+:root {
+    --primary: #0b132b;
+    --accent: #ff2d55;
+    --accent2: #7c4dff;
+    --bg: #0a0f1c;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-top: 150px;
+}
+/* ANIMATED BACKGROUND */
+body::before {
+    content: "";
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 180deg, #ff2d55, #7c4dff, #00d4ff, #ff2d55);
+    opacity: 0.08;
+    animation: spin 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.logo {
+    height: 125px;
+}
+
+/* HERO */
+
+
+h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.7);
+    text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    animation: fadeUp 1s ease;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* BUTTON */
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+button {
+    background: linear-gradient(135deg, #222d55, #7c4dff);
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease;
+    box-shadow: 0 10px 30px rgba(255,45,85,0.3);
+    align-self: center;
+}
+
+    button:hover {
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 15px 40px rgba(124,77,255,0.5);
+    }
+
+/* SECTION */
+section {
+    padding: 80px 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* CARD STYLE */
+.card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 40px 20px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    transform: translateY(25px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+    .card.show {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+
+
+
+
+
+/* FORM */
+form input, form select {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    color: black;
+    outline: none;
+    transition: 0.2s ease;
+    background: rgba(255,255,255,0.7);
+}
+
+    form input::placeholder {
+        color: rgba(150,150,150,0.7);
+    }
+
+    form input:focus, form select:focus {
+        background: rgba(200,200,240,0.8);
+        box-shadow: 0 0 0 2px #ff2d55;
+        color: black;
+    }
+
+
+
+
+/* ANIMATION */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* RESPONSIVE */
+@media(max-width:700px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+}
+
+
+
+/* FOOTER */
+.site-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3%;
+    background: #222;
+    color: #fff;
+    padding: 10px 0;
+    z-index: 1000;
+    border-top: 1px solid #444;
+}
+footer {
+    text-align: center;
+    padding: 40px;
+}
